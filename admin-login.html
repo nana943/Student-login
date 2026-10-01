@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Login - Pana System</title>
+<style>
+  :root { --ink: #172b3a; --blue: #176b87; --blue-hover: #10546b; --paper: #f3f7f7; --white: #fff; --line: #ccd8dc; --muted: #526670; --danger: #a52a2a; }
+  * { box-sizing: border-box; }
+  body { min-height: 100vh; margin: 0; padding: 24px; display: grid; place-items: center; background: var(--paper); color: var(--ink); font-family: "Segoe UI", sans-serif; }
+  main { width: min(100%, 410px); padding: 30px; background: var(--white); border: 1px solid var(--line); border-radius: 8px; box-shadow: 0 12px 34px rgb(23 43 58 / 10%); }
+  h1 { margin: 0 0 8px; font-size: 1.55rem; }
+  .subtitle { margin: 0 0 22px; color: var(--muted); }
+  .mode-switch { display: grid; grid-template-columns: 1fr 1fr; margin-bottom: 20px; border-bottom: 1px solid var(--line); }
+  .mode-switch button { padding: 11px 8px; border: 0; border-bottom: 3px solid transparent; background: transparent; color: var(--muted); font: inherit; font-weight: 650; cursor: pointer; }
+  .mode-switch button[aria-selected="true"] { border-bottom-color: var(--blue); color: var(--blue); }
+  label { display: block; margin: 14px 0 6px; font-size: .92rem; font-weight: 650; }
+  input { width: 100%; min-height: 44px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 5px; font: inherit; }
+  input:focus { outline: 3px solid rgb(23 107 135 / 18%); border-color: var(--blue); }
+  .submit { width: 100%; min-height: 45px; margin-top: 20px; border: 0; border-radius: 5px; background: var(--blue); color: white; font: inherit; font-weight: 700; cursor: pointer; }
+  .submit:hover { background: var(--blue-hover); }
+  .forgot-password { display: block; margin-top: 12px; color: var(--blue); text-align: right; }
+  .status { min-height: 1.4em; margin: 14px 0 0; color: var(--danger); font-size: .92rem; }
+  .status[data-kind="info"] { color: var(--muted); }
+  .back { display: inline-block; margin-top: 16px; color: var(--blue); }
+  @media (max-width: 420px) { main { padding: 24px 20px; } }
+</style>
+</head>
+<body>
+<main>
+  <h1 id="form-title">Admin portal</h1>
+  <p class="subtitle" id="form-subtitle">Sign in with your Firebase email account.</p>
+  <div class="mode-switch" role="tablist" aria-label="Account access">
+    <button id="login-tab" type="button" role="tab" aria-selected="true">Log in</button>
+    <button id="signup-tab" type="button" role="tab" aria-selected="false">Sign up</button>
+  </div>
+  <form id="auth-form">
+    <label for="email">Email</label>
+    <input id="email" name="email" type="email" autocomplete="username" placeholder="name@example.com" required>
+    <label for="password">Password</label>
+    <input id="password" name="password" type="password" autocomplete="current-password" minlength="6" required>
+    <button class="submit" id="submit-button" type="submit">Log in</button>
+  </form>
+  <a class="forgot-password" id="forgot-password" href="#">Forgot Password?</a>
+  <p class="status" id="status" aria-live="polite"></p>
+  <a class="back" href="/">Back to calculator</a>
+</main>
+<script type="module" src="/admin-login.mjs"></script>
+</body>
+</html>
